@@ -1,23 +1,4 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-
-// reactstrap components
 import {
   Button,
   Card,
@@ -33,18 +14,42 @@ import {
   Row,
   Col,
 } from "reactstrap";
-
-// core components
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
 
 class Register extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isConsultantChecked: false,
+      imageFile: null,
+      imagePreviewUrl: "",
+    };
+  }
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
+  handleConsultantCheckboxChange = (e) => {
+    this.setState({ isConsultantChecked: e.target.checked });
+  };
+
+  handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      this.setState({
+        imageFile: file,
+        imagePreviewUrl: URL.createObjectURL(file),
+      });
+    }
+  };
+
   render() {
+    const { isConsultantChecked, imagePreviewUrl } = this.state;
+
     return (
       <>
         <DemoNavbar />
@@ -114,7 +119,7 @@ class Register extends React.Component {
                           <InputGroup className="input-group-alternative mb-3">
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
-                                <i className="ni ni-hat-3" />
+                                <i className="ni ni-circle-08" />
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input placeholder="Name" type="text" />
@@ -144,6 +149,106 @@ class Register extends React.Component {
                             />
                           </InputGroup>
                         </FormGroup>
+                        <FormGroup>
+                          <InputGroup className="input-group-alternative mb-3">
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>
+                                <i className="ni ni-hat-3" />
+                              </InputGroupText>
+                            </InputGroupAddon>
+                            <Input placeholder="Phone" type="text" />
+                          </InputGroup>
+                        </FormGroup>
+                        <FormGroup>
+                          <InputGroup className="input-group-alternative mb-3">
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>
+                                <i className="ni ni-square-pin" />
+                              </InputGroupText>
+                            </InputGroupAddon>
+                            <Input placeholder="Address" type="text" />
+                          </InputGroup>
+                        </FormGroup>
+
+                        {/* Image Upload Input */}
+                        <FormGroup>
+                          <InputGroup className="input-group-alternative mb-3">
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={this.handleImageChange}
+                            />
+                            {imagePreviewUrl && (
+                              <div className="text-center mt-3">
+                                <img
+                                  src={imagePreviewUrl}
+                                  alt="Preview"
+                                  style={{ maxWidth: '100%', height: 'auto' }}
+                                />
+                              </div>
+                            )}
+                          </InputGroup>
+                        </FormGroup>
+
+                        <div className="checkbox-container">
+                          <div className="custom-control custom-checkbox mb-3">
+                            <input
+                              className="custom-control-input"
+                              id="customCheck1"
+                              type="checkbox"
+                            />
+                            <label className="custom-control-label" htmlFor="customCheck1">
+                              Client
+                            </label>
+                          </div>
+                          <div className="custom-control custom-checkbox mb-3">
+                            <input
+                              className="custom-control-input"
+                              id="customCheck2"
+                              type="checkbox"
+                              onChange={this.handleConsultantCheckboxChange}
+                            />
+                            <label className="custom-control-label" htmlFor="customCheck2">
+                              Consultant
+                            </label>
+                          </div>
+                        </div>
+
+                        {isConsultantChecked && (
+                          <div>
+                            <FormGroup>
+                              <InputGroup className="input-group-alternative mb-3">
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="ni ni-briefcase-24" />
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Input placeholder="Company" type="text" />
+                              </InputGroup>
+                            </FormGroup>
+                            <FormGroup>
+                              <InputGroup className="input-group-alternative mb-3">
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="ni ni-calendar-grid-58" />
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Input placeholder="Years of Experience" type="text" />
+                              </InputGroup>
+                            </FormGroup>
+                            <FormGroup>
+                              <InputGroup className="input-group-alternative mb-3">
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="ni ni-map-big" />
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Input placeholder="Specialization" type="text" />
+                              </InputGroup>
+                            </FormGroup>
+                          </div>
+                        )}
+
                         <div className="text-muted font-italic">
                           <small>
                             password strength:{" "}

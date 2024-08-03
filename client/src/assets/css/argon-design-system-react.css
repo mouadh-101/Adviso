@@ -22699,4 +22699,14 @@ td.rdtYear:hover {
   width: 1%;
 }
 
+
 /*# sourceMappingURL=argon-design-system-react.css.map */
+/*# CSS ADDED BY MOUADH*/
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox {
+  margin-right: 20px; /* Adjust the spacing between the checkboxes as needed */
+}
