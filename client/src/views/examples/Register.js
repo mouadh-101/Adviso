@@ -172,22 +172,20 @@ class Register extends React.Component {
 
                         {/* Image Upload Input */}
                         <FormGroup>
-                          <InputGroup className="input-group-alternative mb-3">
-                            <Input
-                              type="file"
-                              accept="image/*"
-                              onChange={this.handleImageChange}
-                            />
-                            {imagePreviewUrl && (
-                              <div className="text-center mt-3">
-                                <img
-                                  src={imagePreviewUrl}
-                                  alt="Preview"
-                                  style={{ maxWidth: '100%', height: 'auto' }}
-                                />
-                              </div>
-                            )}
-                          </InputGroup>
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={this.handleImageChange}
+                          />
+                          {imagePreviewUrl && (
+                            <div className="text-center mt-3">
+                              <img
+                                src={imagePreviewUrl}
+                                alt="Preview"
+                                style={{ maxWidth: '100%', height: 'auto' }}
+                              />
+                            </div>
+                          )}
                         </FormGroup>
 
                         <div className="checkbox-container">
@@ -220,20 +218,10 @@ class Register extends React.Component {
                               <InputGroup className="input-group-alternative mb-3">
                                 <InputGroupAddon addonType="prepend">
                                   <InputGroupText>
-                                    <i className="ni ni-briefcase-24" />
-                                  </InputGroupText>
-                                </InputGroupAddon>
-                                <Input placeholder="Company" type="text" />
-                              </InputGroup>
-                            </FormGroup>
-                            <FormGroup>
-                              <InputGroup className="input-group-alternative mb-3">
-                                <InputGroupAddon addonType="prepend">
-                                  <InputGroupText>
                                     <i className="ni ni-calendar-grid-58" />
                                   </InputGroupText>
                                 </InputGroupAddon>
-                                <Input placeholder="Years of Experience" type="text" />
+                                <Input placeholder="Years of Experience" type="number" />
                               </InputGroup>
                             </FormGroup>
                             <FormGroup>
@@ -244,6 +232,16 @@ class Register extends React.Component {
                                   </InputGroupText>
                                 </InputGroupAddon>
                                 <Input placeholder="Specialization" type="text" />
+                              </InputGroup>
+                            </FormGroup>
+                            <FormGroup>
+                              <InputGroup className="input-group-alternative mb-3">
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="ni ni-align-left-2" />
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Input placeholder="Bio" type="textarea" />
                               </InputGroup>
                             </FormGroup>
                           </div>
