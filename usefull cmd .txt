@@ -1,1 +1,2 @@
 npx sequelize-cli db:create (to create data base )
+npx sequelize-cli db:migrate
