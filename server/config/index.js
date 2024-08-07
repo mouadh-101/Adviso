@@ -1,0 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+const { PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, DB_PORT,SECRET_ACCESS_TOKEN } = process.env;
+
+export { PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, DB_PORT,SECRET_ACCESS_TOKEN };
